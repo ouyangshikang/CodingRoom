@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>URL.createObjectURL 图片上传预览</title>
+  <style>
+    .preview {
+      margin-top: 10px;
+      padding: 10px;
+      min-height: 100px;
+      background-color: #999;
+    }
+
+  </style>
+</head>
+<body>
+  <input
+    id="upload"
+    type="file"
+    onchange=onUpload(this.files[0])
+  >
+  <div class="preview"></div>
+
+  <script>
+    function onUpload(file) {
+      var blob = new Blob([file])  // 转二进制
+      var url = URL.createObjectURL(blob)  // 转成url
+      var pre = document.getElementsByClassName('preview')[0]
+      if (/image/g.test(file.type)) {
+          var img = '<img src="' + url + '">'
+          console.log(pre)
+          URL.revokeObjectURL(this.src)  // 释放createObjectURL创建的对象
+          pre.innerHTML = img
+      } else if (/video/g.test(file.type)) {
+          var video = '<video controls src="' + url + '">'
+          URL.revokeObjectURL(this.src)
+          pre.innerHTML = video
+      }
+    }
+  </script>
+</body>
+</html>
