@@ -1,0 +1,19 @@
+{
+  "name": "codingroom",
+  "version": "1.0.0",
+  "description": "coding, just do it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ouyangshikang/CodingRoom.git"
+  },
+  "author": "baituo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ouyangshikang/CodingRoom/issues"
+  },
+  "homepage": "https://github.com/ouyangshikang/CodingRoom#readme"
+}

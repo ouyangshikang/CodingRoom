@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp" value="测试复制粘贴" />
+
+    <script>
+        window.onload = function(){
+            var oInp = document.getElementById("inp");
+
+            function getClipboardText(event){
+                var clipboardData = event.clipboardData || window.clipboardData;
+                console.log(clipboardData);
+                return clipboardData.getData("text");
+            };
+
+            window.addEventListener('paste',function(event){
+                var event = event || window.event;
+                var text = getClipboardText(event);
+                if(!/^\d+$/.test(text)){
+                    event.preventDefault();
+                }
+            }, false);
+        }
+    </script>
+</body>
+</html>
