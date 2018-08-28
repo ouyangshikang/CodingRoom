@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>svg绘制ps蚂蚁边框</title>
+    <style>
+        path {
+            fill: none;
+            stroke: #000;
+            stroke-width: 1px;
+            stroke-dasharray: 5px;
+            animation: move .5s linear infinite;
+        }
+
+        @keyframes move {
+            from {
+                stroke-dashoffset: 0px;
+            }
+            to {
+                stroke-dashoffset: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5 L105 5 L105 105 L5 105 L5 5">
+    </svg>
+</body>
+</html>
