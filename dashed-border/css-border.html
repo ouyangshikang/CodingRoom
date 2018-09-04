@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css实现ps的蚂蚁线</title>
+    <style>
+        .css-border {
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            /* background: url('http://frontman.cn/img/avatar.jpg'); */
+            background: linear-gradient(#efefef,#ccc) padding-box,  linear-gradient(135deg, rgba(0, 0, 0, 1) 25%, transparent 25%, transparent 50%, rgba(1, 1, 1, 1) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+            background-size: 100% 100%, 8px 8px;
+            animation: bg 1s linear infinite;
+        }
+        .css-border:hover {
+            border: 1px dashed transparent;
+        }
+
+        @keyframes bg {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 8px 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="css-border">
+        <span>蚂蚁线</span>
+    </div>
+</body>
+</html>
