@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/ouyangshikang/CodingRoom/issues"
   },
-  "homepage": "https://github.com/ouyangshikang/CodingRoom#readme"
+  "homepage": "https://github.com/ouyangshikang/CodingRoom#readme",
+  "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.5.0",
+    "eslint-plugin-html": "^4.0.5"
+  }
 }
