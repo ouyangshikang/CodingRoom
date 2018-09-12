@@ -3,49 +3,28 @@ const HTMLPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const ExtractPlugin = require('extract-text-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
+const merge = require('webpack-merge');
+
 const isDev = process.env.NODE_ENV === 'development';
 
-if (isDev) {
+const defaultPlugins = [
+	new webpack.DefinePlugin({
+		'process.env': {
+			NODE_ENV: isDev ? '"development"' : '"production"'
+		}
+	}),
+	new HTMLPlugin()
+];
+let config;
 
-	config.module.rules.push({
-		test: /\.styl/,
-		use: [
-			'style-loader',
-			'css-loader',
-			{
-				loader: 'postcss-loader',
-				options: {
-					sourceMap: true
-				}
-			},
-			'stylus-loader'
-		]
-	});
-	config.devtool = '#cheap-module-eval-source-map';
-	config.devServer = {
-		port: 8000,
-		host: '0.0.0.0',
-		overlay: {
-			errors: true
-		},
-		hot: true
-	};
-	config.plugins.push(
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoEmitOnErrorsPlugin()
-	);
-} else {
-	config.entry = {
-		app: path.join(__dirname, 'src/index.js'),
-		vendor: ['vue']
-	};
-	config.output.filename = '[name].[chunkhash:8].js';
-	config.module.rules.push(
-		{
-			test: /\.styl/,
-			use: ExtractPlugin.extract({
-				fallback: 'style-loader',
+if (isDev) {
+	config = merge(baseConfig, {
+		devtool: '#cheap-module-eval-source-map',
+		module: {
+			rules: [{
+				test: /\.scss/,
 				use: [
+					'vue-style-loader',
 					'css-loader',
 					{
 						loader: 'postcss-loader',
@@ -53,20 +32,61 @@ if (isDev) {
 							sourceMap: true
 						}
 					},
-					'stylus-loader'
+					'sass-loader'
 				]
-			})
+			}]
 		},
-	);
-	config.plugins.push(
-		new ExtractPlugin('styles.[contentHash:8].css'),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor'
-		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'runtime'
-		})
-	);
+		devServer: {
+			port: 8000,
+			host: '0.0.0.0',
+			overlay: {
+				errors: true
+			},
+			hot: true
+		},
+		plugins: defaultPlugins.concat([
+			new webpack.HotModuleReplacementPlugin(),
+			new webpack.NoEmitOnErrorsPlugin()
+		])
+	});
+
+} else {
+	config = merge(baseConfig, {
+		entry: {
+			app: path.join(__dirname, '../src/index.js'),
+			vendor: ['vue']
+		},
+		output: {
+			filename: '[name].[chunkhash:8].js'
+		},
+		module: {
+			rules: [{
+				test: /\.scss/,
+				use: ExtractPlugin.extract({
+					fallback: 'vue-style-loader',
+					use: [
+						'css-loader',
+						{
+							loader: 'postcss-loader',
+							options: {
+								sourceMap: true
+							}
+						},
+						'sass-loader'
+					]
+				})
+			}]
+		},
+		plugins: defaultPlugins.concat([
+			new ExtractPlugin('styles.[contentHash:8].css'),
+			new webpack.optimize.CommonsChunkPlugin({
+				name: 'vendor'
+			}),
+			new webpack.optimize.CommonsChunkPlugin({
+				name: 'runtime'
+			})
+		])
+	});
 }
 
 module.exports = config;
