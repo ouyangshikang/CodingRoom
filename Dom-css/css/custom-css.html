@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css custom</title>
+    <style>
+        .container {
+            position: relative;
+            margin: 10px auto;
+            width: 276px;
+            height: 480px;
+            border-radius: 6px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: .3s ease;
+        }
+        .img-box {
+            /* --transition-time: 34.4266s;
+            --top: -6405.33px; */
+            border-radius: 6px;
+            font-size: 0;
+            position: relative;
+            top: 0;
+            width: 100%;
+        }
+        .mask {
+            position: absolute;
+            top: 0;
+            background: #000;
+            border-radius: 6px;
+            height: 100%;
+            opacity: 0;
+            transition: opacity .3s linear;
+            width: 100%;
+        }
+        .container:hover .mask {
+            opacity: .15;
+        }
+        .container:hover .img-box {
+            /* top: var(--top); */
+            /* transition: top var(--transition-time) linear; */
+            /* transition-delay: .4s; */
+            transform: translateY(calc(-100% + 480px));
+            transition: transform 6s linear;
+            transition-delay: .4s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="img-box">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180502-WEZde.png?x-oss-process=image/resize,w_276">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180457-sNzeQ.png?x-oss-process=image/resize,w_276">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180455-maDWE.png?x-oss-process=image/resize,w_276">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180536-DWL54.png?x-oss-process=image/resize,w_276">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180531-TT600.png?x-oss-process=image/resize,w_276">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180530-vSoPL.png?x-oss-process=image/resize,w_276">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180528-CyZ_2.png?x-oss-process=image/resize,w_276">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180522-DoY0C.png?x-oss-process=image/resize,w_276">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180523-7W7-e.png?x-oss-process=image/resize,w_276">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180519-xD2gU.png?x-oss-process=image/resize,w_276">
+            <img src="https://st-gdx.dancf.com/templets/60474/shots/20180928-180518-FVFc_.png?x-oss-process=image/resize,w_276">
+        </div>
+        <div class="mask"></div>
+    </div>
+</body>
+
+</html>
