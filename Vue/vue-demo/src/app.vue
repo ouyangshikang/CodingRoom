@@ -1,9 +1,9 @@
 <template>
 	<div id="app">
-		<div id="cover"></div>
+		<!-- <div id="cover"></div> -->
 		<Header></Header>
-		<todo></todo>
-		<Footer></Footer>
+		<!-- <todo></todo> -->
+		<!-- <Footer></Footer> -->
 	</div>
 </template>
 

@@ -11,6 +11,7 @@
   "author": "baituo",
   "license": "MIT",
   "dependencies": {
+    "bt-ui": "^0.0.2",
     "vue": "^2.5.13"
   },
   "devDependencies": {
