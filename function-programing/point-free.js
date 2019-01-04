@@ -1,32 +1,32 @@
 const users = [{
-	name: 'john lennon',
-	sex: 'male',
-	phone: '123'
+    name: 'john lennon',
+    sex: 'male',
+    phone: '123'
 },
 {
-	name: 'prince',
-	sex: 'male',
-	phone: '234'
+    name: 'prince',
+    sex: 'male',
+    phone: '234'
 },
 {
-	name: 'rihanna',
-	sex: 'female',
-	phone: '345'
+    name: 'rihanna',
+    sex: 'female',
+    phone: '345'
 },
 {
-	name: 'taylor swift',
-	sex: 'female',
-	phone: '456'
+    name: 'taylor swift',
+    sex: 'female',
+    phone: '456'
 }
 ];
 
 // 找出所有女性的phone
 
 const FemaleUser = users => {
-	return users.filter(u => u.sex === 'female');
+    return users.filter(u => u.sex === 'female');
 };
 const getPhone = users => {
-	return users.map(u => u.phone);
+    return users.map(u => u.phone);
 };
 const compose = (femaleUser, getPhone) => (x) => getPhone(femaleUser(x));
 
