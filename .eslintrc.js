@@ -21,11 +21,16 @@ module.exports = {
         "html"
     ],
     "rules": {
-        "comma-dangle": [2, "never"], // 对象字面量项尾不能有逗号
-        "curly": 1, // 必须使用if() {} 的‘{}’
-        "eol-last": 1, // 文件末尾强制换行
-        "eqeqeq": 2, // 使用 === 替代 ==
-        "indent": [2, 4, { // 缩进格式
+        // 对象字面量项尾不能有逗号
+        "comma-dangle": [2, "never"],
+        // 必须使用if() {} 的‘{}’
+        "curly": 1,
+        // 文件末尾强制换行
+        "eol-last": 1,
+        // 使用 === 替代 ==
+        "eqeqeq": 2,
+        // 缩进格式
+        "indent": [2, 4, {
             "MemberExpression": 0
         }],
         "keyword-spacing": [
@@ -48,18 +53,24 @@ module.exports = {
                 }
             }
         ],
+        // 换行分格, unix || windows
         "linebreak-style": ["error", "unix"],
+        // 不能有声明后未被使用的变量或参数
         "no-unused-vars": [
             1, { vars: "local", args: "after-used" }
         ],
-        "no-console": "off", // 可以使用cosole
-        "no-multiple-empty-lines": [2, {"max": 3}], //空行最多不能超过3行
+        // 可以使用cosole
+        "no-console": "off",
+        //空行最多不能超过3行
+        "no-multiple-empty-lines": [2, {"max": 3}],
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-        "quotes": [ // 字符串单引号
+        // 字符串单引号
+        "quotes": [
             2, "single", "avoid-escape"
         ],
-        "semi": [1, "always"], // 必须分号结尾
-
-        "space-before-function-paren": [2, "never"], // 函数定义括号前的空格
+        // 必须分号结尾
+        "semi": [1, "always"],
+        // 函数定义括号前的空格
+        "space-before-function-paren": [2, "never"],
     }
 };
