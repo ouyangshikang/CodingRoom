@@ -34,9 +34,9 @@
 </template>
 
 <script>
-  import Slider from 'module/slider/slider';
-  import Scroll from 'module/scroll/scroll';
-  import Loading from 'module/loading/loading';
+  import Slider from 'components/slider/slider';
+  import Scroll from 'components/scroll/scroll';
+  import Loading from 'components/loading/loading';
   import { getRecommend, getPlayList } from 'api/recommend';
   import { ERR_OK } from 'api/config';
   export default{

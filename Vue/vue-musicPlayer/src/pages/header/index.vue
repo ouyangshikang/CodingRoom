@@ -13,7 +13,7 @@
   };
 </script>
 
-<style lang="scss"  scoped>
+<style lang="scss" scoped>
     @import "~@/scss/variable.scss";
     @import "~@/scss/mixin.scss";
 

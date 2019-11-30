@@ -39,8 +39,8 @@
 </template>
 
 <script>
-  import Scroll from 'module/scroll/scroll';
-  import Loading from 'module/loading/loading';
+  import Scroll from '../scroll/scroll';
+  import Loading from '../loading/loading';
   import {getData} from '@/js/dom';
 
   const ANCHOR_HEIGHT = 18;

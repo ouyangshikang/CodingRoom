@@ -24,8 +24,8 @@
 </template>
 
 <script>
-  import SongList from 'module/song-list/song-list';
-  import Scroll from 'module/scroll/scroll';
+  import SongList from 'components/song-list/song-list';
+  import Scroll from 'components/scroll/scroll';
   export default{
       props: {
           bgImage: {

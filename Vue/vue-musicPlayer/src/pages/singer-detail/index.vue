@@ -10,7 +10,7 @@
   import {getSingerDetail} from 'api/singer';
   import { ERR_OK } from 'api/config';
   import {createSong} from '@/js/song';
-  import MusicList from 'components/music-list/music-list';
+  import MusicList from '../music-list/index';
   export default{
       data() {
           return {
