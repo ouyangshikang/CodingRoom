@@ -19,7 +19,7 @@
     "fastclick": "^1.0.6",
     "jsonp": "^0.2.1",
     "better-scroll": "^0.4.0",
-    "axios": "^0.16.2",
+    "axios": "^0.19.0",
     "vue-lazyload": "^1.0.6",
     "vuex": "^2.4.0"
   },
