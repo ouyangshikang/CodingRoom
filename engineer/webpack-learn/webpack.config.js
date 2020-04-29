@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: './src/index.js',
@@ -6,7 +7,7 @@ module.exports = {
         filename: '[name]-bundle.js',
         path: path.join(__dirname, 'dist')
     },
-    mode: 'production',
+    mode: 'development',
     module: {
         rules: [
             {
@@ -35,5 +36,12 @@ module.exports = {
                 use: 'file-loader'
             }
         ]
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        hot: true
     }
 }
