@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -38,7 +39,21 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src/index.html'), // 模板位置
+            filename: 'index.html', // 输出的文件名
+            chunks: ['main'], // 生成的html要使用的 chunks
+            inject: true, // js 文件注入到 body 最下面
+            minify: {
+                html5: true,
+                collapseWhitespace: true,
+                preserveLineBreaks: false,
+                minifyCSS: true,
+                minifyJS: true,
+                removeComments: false
+            }
+        })
     ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
