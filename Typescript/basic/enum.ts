@@ -34,5 +34,16 @@ enum Char {
     e = '1234'.length,
     f = 22
 }
-console.log(Char);
+// console.log(Char);
+
+/**
+ * 常量枚举
+ */
+const enum Month {
+    Jan,
+    Feb,
+    Mar
+}
+
+let month = [Month.Jan, Month.Feb, Month.Mar];
 
