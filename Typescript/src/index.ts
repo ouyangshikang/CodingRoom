@@ -1,1 +1,1 @@
-let hello: string = 'hello ts';
+import './basic/class-abstract';
