@@ -26,10 +26,3 @@ interface UserModel {
     listFollowers(cuid: string): UserProfile[]; // 获取所有关注者
     followByCuid(cuid: string, who: string): string; // 关注某人
 }
-
-class UserModelImpl implements UserModel {
-    createUser(profile: UserProfile): string {
-        return profile.name;
-    }
-    // ....
-}
