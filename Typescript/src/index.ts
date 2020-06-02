@@ -1,1 +1,1 @@
-import './basic/class-abstract';
+import './basic/class-interface';
