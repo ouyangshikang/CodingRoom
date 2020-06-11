@@ -1,0 +1,3 @@
+*.vue linguist-language=Javascript
+*.css linguist-language=TypeScript
+*.html linguist-language=TypeScript
