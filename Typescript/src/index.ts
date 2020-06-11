@@ -1,1 +1,1 @@
-import './basic/class-interface';
+import './basic/merge';
