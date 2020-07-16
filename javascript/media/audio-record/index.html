@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>audio recording</title>
+</head>
+<body>
+    <input type="file" onchange="playMusic.call(this)" class="select-flie">
+    <button id="start">开始录音</button>
+    <button id="stop">停止录音</button>
+    <audio class="audio" controls autoplay></audio>
+
+    <script src="./main.js" type="module"></script>
+</body>
+</html>
