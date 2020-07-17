@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>audio recording</title>
+    <style>
+        #canvas-big {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <input type="file" onchange="playMusic.call(this)" class="select-flie">
     <button id="start">开始录音</button>
     <button id="stop">停止录音</button>
+    <button id="draw">开始绘制</button>
+    <button id="stopDraw">停止绘制</button>
     <audio class="audio" controls autoplay></audio>
-
+    <canvas id="canvas" width="400" height="150"></canvas>
+    <canvas id="canvas-big"></canvas>
     <script src="./main.js" type="module"></script>
 </body>
 </html>

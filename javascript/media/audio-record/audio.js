@@ -7,6 +7,7 @@ export default class Record {
         this.jsNode = null;
         this.mediaNode = null;
         this.recording = false;
+        this.analyser = null;
     }
 
     /**
@@ -19,6 +20,12 @@ export default class Record {
 
         // 调起麦克风
         window.navigator.mediaDevices.getUserMedia({
+            // audio: {
+            //     sampleRate: 44100, // 采样率
+            //     channelCount: 2,   // 声道
+            //     volume: 1.0,       // 音量
+            //     noiseSuppression: true // 降噪
+            // }
             audio: true
         })
         .then(mediaStream => {
@@ -55,24 +62,37 @@ export default class Record {
             return;
         }
         this.recording = true;
+
         const audioContext = new (window.AudioContext || window.webkitAudioContext);
+        // 创建音频源节点
         this.mediaNode = audioContext.createMediaStreamSource(mediaStream);
 
-        // 创建一个jsNode
-        this.jsNode = createJSNode(audioContext);
+        // 创建录音分析节点
+        this.analyser = audioContext.createAnalyser();
+        this.analyser.fftSize = 2048; // 表示存储频域的大小
 
-        this.jsNode.connect(audioContext.destination);
+        // 创建一个jsNode 音频处理节点
+        this.jsNode = createJSNode(audioContext);
         this.jsNode.onaudioprocess = this.onAudioProcess.bind(this);
 
-        // 把mediaNode连接到jsNode
-        this.mediaNode.connect(this.jsNode);
+
+        this.mediaNode.connect(this.analyser);
+
+        // 把音频源节点连接到音频处理节点
+        // this.mediaNode.connect(this.jsNode);
+        this.mediaNode.connect(this.analyser);
+        this.analyser.connect(this.jsNode);
+
+        // 处理节点 连接到扬声器
+        this.jsNode.connect(audioContext.destination);
     }
 
     /**
-     * 在 process 回调里批量处理声音的数据
+     * 在 process 回调里得到 pcm 音频流
      */
      onAudioProcess(event) {
         const inputBuffer = event.inputBuffer;
+        // getChannelData返回 Float32Array 类型的 pcm 数据
         const leftChannelData = inputBuffer.getChannelData(0);
         const rightChannelData = inputBuffer.getChannelData(1);
 
@@ -89,6 +109,7 @@ export default class Record {
             this.mediaStream.getAudioTracks()[0].stop();
             this.mediaNode.disconnect();
             this.jsNode.disconnect();
+            this.analyser.disconnect();
             this.jsNode = null;
             this.mediaNode = null;
             this.recording = false;
@@ -103,5 +124,14 @@ export default class Record {
             this.rightDataList = [];
             return new Blob([new Uint8Array(wavBuffer)], { type: 'audio/mp3' });
         }
+    }
+
+    getAnalyseData() {
+        let dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+        // 将波形或时域数据复制并传入到方法的第一个参数中
+        this.analyser.getByteTimeDomainData(dataArray);
+        // this.analyser.getByteFrequencyData(dataArray);
+
+        return dataArray;
     }
 }
