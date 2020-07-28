@@ -19,11 +19,11 @@ export default class Record {
         }
 
         // 调起麦克风
-        window.navigator.mediaDevices.getUserMedia({
+        return window.navigator.mediaDevices.getUserMedia({
             // audio: {
             //     sampleRate: 44100, // 采样率
             //     channelCount: 2,   // 声道
-            //     volume: 1.0,       // 音量
+            //     echoCancellation: true, // 降低回声
             //     noiseSuppression: true // 降噪
             // }
             audio: true
@@ -94,6 +94,7 @@ export default class Record {
         const inputBuffer = event.inputBuffer;
         // getChannelData返回 Float32Array 类型的 pcm 数据
         const leftChannelData = inputBuffer.getChannelData(0);
+        // console.log(leftChannelData);
         const rightChannelData = inputBuffer.getChannelData(1);
 
         this.leftDataList.push(leftChannelData.slice(0));
