@@ -8,12 +8,11 @@ async function extractAudio(){
     const data = await fetch(videoUrl).then(res => res.arrayBuffer());
 
     audioContext.decodeAudioData(data).then(decodedAudioData => {
-        mySoundBuffer = decodedAudioData;
         soundSource = audioContext.createBufferSource();
-        soundSource.buffer = mySoundBuffer;
+        soundSource.buffer = decodedAudioData;
         soundSource.connect(audioContext.destination);
         soundSource.start();
-        console.log(mySoundBuffer.length);
+        console.log(decodedAudioData.length);
 
         audioContext.startRendering().then(renderedBuffer => {
             console.log(renderedBuffer);
