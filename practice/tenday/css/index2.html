@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>饼图2(linear-gradient)</title>
+    <style>
+        .pie,
+        .pie::before {
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+        .pie {
+            color: #fff;
+            font-size: 1rem;
+            line-height: 150px;
+            text-align: center;
+            background: linear-gradient(0.25turn, #3c7 50%, transparent 50%);
+            animation: convex 10s step-end infinite;;
+            animation-play-state: paused;
+            animation-delay: -0s;
+        }
+        .pie::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            background: linear-gradient(90deg, #37c 50%, #3c7 50%);
+            z-index: -1;
+            transform: rotate(0turn);
+            animation: spin 10s linear infinite;
+            animation-play-state: paused;
+            animation-delay: inherit;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(1turn)
+            }
+        }
+        @keyframes convex{
+            50% {
+                background: linear-gradient(90deg, transparent 50%, #37c 50% 0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="pie" style="animation-delay: -1s;">10%</div>
+    <div class="pie" style="animation-delay: -2.5s;">25%</div>
+    <div class="pie" style="animation-delay: -5s;">50%</div>
+    <div class="pie" style="animation-delay: -8s;">80%</div>
+</body>
+</html>

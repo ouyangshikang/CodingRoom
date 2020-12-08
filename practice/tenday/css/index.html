@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>饼图(linear-gradient)</title>
+    <style>
+        .pie,
+        .pie::before {
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+        .pie {
+            /* background: linear-gradient(0.35turn, transparent 50%, #37c 50%); */
+            color: #fff;
+            font-size: 1rem;
+            line-height: 150px;
+            text-align: center;
+        }
+        .pie::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            background: linear-gradient(90deg, #37c 50%, #3c7 50%);
+            z-index: -1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="pie">10%</div>
+    <div class="pie">50%</div>
+    <div class="pie">80%</div>
+
+    <script>
+        function initPieGraph() {
+            const graphs = document.querySelectorAll('.pie');
+            graphs.forEach((graph) => {
+                const percentage = parseFloat(graph.innerHTML) / 100;
+                if(percentage <= 0.5) {
+                    graph.style.background = `linear-gradient(${percentage + .25}turn, transparent 50%,#37c 50%)`;
+                }
+                else {
+                    graph.style.background = `linear-gradient(${percentage + .25}turn, #3c7 50%, transparent 50%)`;
+                }
+            });
+        }
+        initPieGraph();
+    </script>
+</body>
+</html>
