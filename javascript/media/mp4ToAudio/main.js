@@ -1,4 +1,10 @@
 const videoUrl = 'https://gd-filems.dancf.com/mps-output/b13383e75fab43869a107d21fc14efa3/to-mp4/file.mp4';
+const videoUrl2 = 'https://st0.dancf.com/csc/193/configs/system/20201108-115518-0247.mov';
+const videoUrl3 = 'https://st0.dancf.com/csc/193/configs/system/20201108-121021-0cea.mp4';
+const videoUrl4 = 'https://st0.dancf.com/csc/193/configs/system/20201108-121054-1143.mp4';
+const videoUrl5 = 'https://st0.dancf.com/csc/193/configs/system/20201108-121305-b949.avi';
+
+
 
 /**
  * 从 mp4 提取 音频
