@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function *shuffle(items) {
+            items = [...items];
+            for(let i = items.length; i > 0; i--) {
+                const idx = Math.floor(Math.random() * i);
+                [items[idx], items[i - 1]] = [items[i - 1], items[idx]];
+                yield items[i - 1];
+            }
+        }
+
+        let items = [...new Array(100).keys()];
+
+        let n = 0;
+        // 100个号随机抽取5个
+        for(let item of shuffle(items)) {
+            console.log(item);
+            if(n++ >= 5) break;
+        }
+    </script>
+</body>
+</html>
