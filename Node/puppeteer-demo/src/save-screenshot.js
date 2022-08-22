@@ -10,8 +10,9 @@ const puppeteer = require('puppeteer');
  * @param {*} path 截图保存路径
  */
 const saveScreenShot = async (url, path) => {
-
-    const browser = await puppeteer.launch({ignoreDefaultArgs: ['--disable-extensions']});
+    const browser = await puppeteer.launch({
+        ignoreDefaultArgs: ['--disable-extensions'],
+    });
     const page = await browser.newPage();
 
     page.setViewport({
@@ -27,5 +28,5 @@ const saveScreenShot = async (url, path) => {
     await browser.close();
 };
 
-saveScreenShot('https://www.gaoding.com', './gaoding.png');
+saveScreenShot('https://www.gaoding.com', './assets/gaoding.png');
 // module.exports = saveScreenShot;
