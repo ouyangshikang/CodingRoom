@@ -28,5 +28,5 @@ const saveScreenShot = async (url, path) => {
     await browser.close();
 };
 
-saveScreenShot('https://www.gaoding.com', './assets/gaoding.png');
+saveScreenShot('https://www.gaoding.com', '../assets/gaoding.png');
 // module.exports = saveScreenShot;
