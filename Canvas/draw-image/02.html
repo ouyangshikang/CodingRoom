@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>drawImage 在画布中心进行图像缩放</title>
+    </head>
+    <body>
+        <canvas
+            id="canvas"
+            style="border: 1px solid #ccc; display: block; margin: 0 auto"
+        >
+            当前浏览器不支持canvas
+        </canvas>
+
+        <input
+            type="range"
+            id="scale-range"
+            min="0.5"
+            max="3.0"
+            step="0.1"
+            value="1.0"
+            style="display: block; width: 600px; margin: 20px auto"
+        />
+        <script>
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+            const slider = document.getElementById('scale-range');
+            const image = new Image();
+            canvas.width = 800;
+            canvas.height = 800;
+
+            window.onload = () => {
+                const scale = +slider.value;
+
+                image.src =
+                    'https://st-gdx.dancf.com/gaodingx/0/uxms/design/20210118-165120-c8ca.png';
+                image.onload = () => {
+                    drawImageByScale(scale);
+
+                    slider.onmousemove = () => {
+                        drawImageByScale(slider.value);
+                    };
+                };
+            };
+
+            function drawImageByScale(scale) {
+                const imageWidth = 800 * scale;
+                const imageHeight = 800 * scale;
+
+                const dx = (canvas.width - imageWidth) / 2;
+                const dy = (canvas.height - imageHeight) / 2;
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(image, dx, dy, imageWidth, imageHeight);
+            }
+        </script>
+    </body>
+</html>

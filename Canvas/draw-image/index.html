@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>drawImage</title>
+    </head>
+    <body>
+        <canvas
+            id="canvas"
+            style="border: 1px solid #ccc; display: block; margin: 0 auto"
+        >
+            当前浏览器不支持canvas
+        </canvas>
+        <script>
+            window.onload = () => {
+                const image = new Image();
+                const canvas = document.getElementById('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 800;
+                canvas.height = 800;
+
+                image.src = './assets/1.png';
+                image.onload = () => {
+                    context.drawImage(
+                        image,
+                        200,
+                        200,
+                        1000,
+                        1600,
+                        0,
+                        0,
+                        canvas.width,
+                        canvas.height
+                    );
+                };
+            };
+        </script>
+    </body>
+</html>
