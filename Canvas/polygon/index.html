@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>drawImage</title>
+    </head>
+    <body>
+        <canvas
+            id="canvas"
+            style="border: 1px solid #ccc; display: block; margin: 0 auto"
+        >
+            当前浏览器不支持canvas
+        </canvas>
+        <script>
+            window.onload = () => {
+                const canvas = document.getElementById('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = 800;
+                canvas.height = 800;
+
+                drawPolygonPath(6, 100, 200, 200, context);
+
+                context.stroke();
+            };
+
+            /**
+             * 绘制多边形路径
+             * sideNum:边数
+             * radius：半径
+             * originX, originY原点位置
+             */
+            function drawPolygonPath(sideNum, radius, originX, originY, ctx) {
+                ctx.beginPath();
+                const unitAngle = (Math.PI * 2) / sideNum; //计算单元角度
+
+                let angle = 0, //初始角度
+                    xLength,
+                    yLength;
+
+                for (let i = 0; i < sideNum; i++) {
+                    //遍历计算点，并lineTo()绘制路径
+                    xLength = radius * Math.cos(angle);
+                    yLength = radius * Math.sin(angle);
+                    ctx.lineTo(originX + xLength, originY - yLength); //绘制路径
+                    angle += unitAngle;
+                }
+                ctx.closePath(); //闭合路径，也可在for循环中多一次循环lineTo()至起点
+            }
+        </script>
+    </body>
+</html>
