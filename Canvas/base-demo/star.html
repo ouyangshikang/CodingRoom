@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>画一个五角星</title>
+    </head>
+    <body>
+        <canvas id="canvas" style="border: 1px solid #ccc; display: block; margin: 0 auto">
+            当前浏览器不支持canvas
+        </canvas>
+
+        <script>
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+
+            canvas.width = 800;
+            canvas.height = 800;
+            // 圆心位置
+            const origin = { x: 400, y: 400 };
+            const radius = 300;
+            const innerRadius = 150;
+
+            context.beginPath();
+            for (let i = 0; i < 5; i++) {
+                // 绘制五角星外角的点
+                context.lineTo(
+                    Math.cos(((18 + i * 72) * Math.PI) / 180) * radius + origin.x,
+                    -Math.sin(((18 + i * 72) * Math.PI) / 180) * radius + origin.y
+                );
+                // 绘制内角的点
+                context.lineTo(
+                    Math.cos(((54 + i * 72) * Math.PI) / 180) * innerRadius + origin.x,
+                    -Math.sin(((54 + i * 72) * Math.PI) / 180) * innerRadius + origin.y
+                );
+            }
+            context.closePath();
+            context.lineWidth = 10;
+            context.lineJoin = 'round';
+            context.stroke();
+        </script>
+    </body>
+</html>
