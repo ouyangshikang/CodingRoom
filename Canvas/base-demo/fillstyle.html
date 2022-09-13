@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>填充样式</title>
+    </head>
+    <body>
+        <canvas id="canvas" style="border: 1px solid #ccc; display: block; margin: 0 auto">
+            当前浏览器不支持canvas
+        </canvas>
+
+        <script>
+            window.onload = () => {
+                const canvas = document.getElementById('canvas');
+                canvas.width = 800;
+                canvas.height = 800;
+                const context = canvas.getContext('2d');
+
+                const grd = context.createLinearGradient(0, 0, 800, 800);
+                grd.addColorStop(0.0, '#fff');
+                grd.addColorStop(1.0, '#000');
+
+                context.fillStyle = grd;
+
+                context.fillRect(0, 0, 800, 800);
+            };
+        </script>
+    </body>
+</html>
