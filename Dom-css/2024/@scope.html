@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @scope (ul) {
+        a {
+          color: red;
+        }
+        li::marker {
+          content: '🐂';
+          font-size: 12px;
+        }
+      }
+      ::selection {
+        background-color: yellow;
+        color: red;
+      }
+      .first-letter::first-letter {
+        font-size: 2em;
+        color: red;
+      }
+      .first-line::first-line {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      p::grammar-error {
+        text-decoration: line-through;
+        color: red;
+      }
+
+      p::spelling-error {
+        text-decoration: underline;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <ul>
+        <li><a href="">链接1</a></li>
+        <li><a href="">链接2</a></li>
+        <li><a href="">链接3</a></li>
+      </ul>
+      <p><a>链接4</a></p>
+      <p class="first-letter">first letter</p>
+      <p class="first-line">first line<br />second line</p>
+      <p class="spell">helol everyone</p>
+    </div>
+  </body>
+</html>
