@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvas" style="border: 1px solid #ccc; display: block; margin: 0 auto">
+      当前浏览器不支持canvas
+    </canvas>
+
+    <script>
+      window.onload = () => {
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+
+        canvas.width = 800;
+        canvas.height = 800;
+
+        draw(context);
+      };
+
+      /*
+      function draw(context) {
+        context.fillRect(0, 0, 150, 150); // 使用默认设置绘制一个矩形
+        context.save(); // 保存默认状态
+
+        context.fillStyle = '#09F'; // 在原有配置基础上对颜色做改变
+        context.fillRect(15, 15, 120, 120); // 使用新的设置绘制一个矩形
+        context.save(); // 保存当前状态
+
+        context.fillStyle = '#FFF'; // 再次改变颜色配置
+        context.globalAlpha = 0.5;
+        context.fillRect(30, 30, 90, 90); // 使用新的配置绘制一个矩形
+
+        context.restore(); // 重新加载之前的颜色状态
+        context.fillRect(45, 45, 60, 60); // 使用上一次的配置绘制一个矩形
+
+        context.restore(); // 加载默认颜色配置
+        context.fillRect(60, 60, 30, 30); // 使用加载的配置绘制一个矩形
+      }
+      */
+
+      /*
+      function draw(context) {
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) {
+            // context.save();
+            context.fillStyle = `rgb(${50 * i}, ${255 - 50 * i}, 255)`;
+            // context.translate(j * 50, i * 50);
+            // context.fillRect(0, 0, 25, 25);
+            context.fillRect(j * 50, i * 50, 25, 25);
+            // context.restore();
+          }
+        }
+      }
+      */
+
+      function draw(context) {
+        context.save();
+        // blue rect
+        context.fillStyle = '#0095DD';
+        context.fillRect(30, 30, 100, 100);
+        context.rotate((Math.PI / 180) * 30);
+        // grey rect
+        context.fillStyle = '#4D4E53';
+        context.fillRect(30, 30, 100, 100);
+        context.restore();
+
+        // draw blue rect
+        context.fillStyle = '#0095DD';
+        context.fillRect(150, 30, 100, 100);
+
+        context.translate(200, 80); // translate to rectangle center
+        context.rotate((Math.PI / 180) * 25); // rotate
+        context.translate(-200, -80);
+        context.fillStyle = '#4D4E53';
+        context.fillRect(150, 30, 100, 100);
+      }
+    </script>
+  </body>
+</html>
