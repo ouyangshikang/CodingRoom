@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>画个圆角矩形</title>
+  </head>
+  <body>
+    <canvas id="canvas" style="border: 1px solid #ccc; display: block; margin: 0 auto">
+      当前浏览器不支持canvas
+    </canvas>
+
+    <script>
+      window.onload = () => {
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+
+        canvas.width = 800;
+        canvas.height = 800;
+
+        draw(context);
+      };
+
+      function draw(context) {
+        const r = 40;
+        const width = 200;
+        context.save();
+        context.translate(300, 300);
+
+        context.beginPath();
+        context.arc(r, r, r, Math.PI, (Math.PI * 3) / 2);
+        context.arc(width - r, r, r, (Math.PI * 3) / 2, Math.PI * 2);
+        context.arc(width - r, width - r, r, 0, Math.PI / 2);
+        context.arc(r, width - r, r, Math.PI / 2, Math.PI);
+        context.closePath();
+
+        context.lineWidth = 4;
+        context.strokeStyle = '#f00';
+        context.stroke();
+
+        context.restore();
+      }
+    </script>
+  </body>
+</html>
